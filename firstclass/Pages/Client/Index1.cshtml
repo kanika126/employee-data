@@ -1,0 +1,43 @@
+﻿@page
+@model firstclass.Pages.Client.Index1Model
+@{
+}
+<br />
+<h2> LIST OF CLIENTS </h2>
+<form>
+    <p>
+        Title: <input type="text" name="SearchString" />
+        <input type="submit" value="Search" />
+        <a href="./Index1">Back to full List</a>
+    </p>
+</form>
+<a class='btn btn-primary btn-sm' href='/Client/Create'> Add New Client </a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var clientInfo in Model.listClients)
+        {
+        <tr>
+            <td>@clientInfo.id</td>
+            <td>@clientInfo.name</td>
+            <td>@clientInfo.email</td>
+            <td>@clientInfo.phone</td>
+            <td>@clientInfo.address</td>
+            <td>
+                <a class="btn btn-primary btn-sm" href="/Client/edit?id=@clientInfo.id">Edit</a>
+                <a class="btn btn-primary btn-sm" href="/Client/delete?id=@clientInfo.id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
